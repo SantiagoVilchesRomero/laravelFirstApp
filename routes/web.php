@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\JuegoController;
+use App\Http\Controllers\SettingController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,5 +17,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
+
+
+Route::resource('juego', JuegoController::class);
+
+Route::get('setting', [SettingController::class, 'index'])-> name('setting.index');
+Route::put('setting', [SettingController::class, 'update'])-> name('setting.update');
